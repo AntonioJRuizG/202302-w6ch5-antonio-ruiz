@@ -1,7 +1,5 @@
 # Challenge 5 - week 6
 
-## Calculadora WebService
-
 ## API REST Things I already know / Lo que querais
 
 Crea una API REST que se conecte a un fichero JSON, para manipular recursos de tipo _cosas que ya sé_. El JSON tendrá una sola propiedad de tipo array, donde almacenarán objetos que representarán cosas que hemos aprendido en el bootcamp.
