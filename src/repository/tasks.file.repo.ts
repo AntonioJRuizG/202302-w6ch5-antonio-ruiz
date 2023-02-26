@@ -37,7 +37,7 @@ export class TaskFileRepo {
   async delete(newData: TaskStructure) {
     const info = await fs.readFile(file, { encoding: 'utf-8' });
     const parsedData: TaskStructure[] = JSON.parse(info);
-    const deleteData = parsedData.splice(newData.id);
+    const deleteData = parsedData.filter((item) => item.id !== newData.id);
     const finalData = JSON.stringify(deleteData);
     await fs.writeFile(file, finalData, { encoding: 'utf-8' });
   }
