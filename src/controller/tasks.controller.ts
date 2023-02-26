@@ -20,17 +20,25 @@ export class TaskController {
     });
   }
 
-  post(req: Request, res: Response) {
-    this.repo.write(req.body).then(() => {
-      res.send('<h2>Your are great<h2>');
+  async post(req: Request, res: Response) {
+    await this.repo.write(req.body).then(() => {
+      res.send('New task added!');
     });
   }
 
-  patch(req: Request, res: Response) {
-    res.send('Things ' + req.params.id);
+  async patch(req: Request, res: Response) {
+    const id = Number(req.params.id);
+    const currentTask: any = await this.repo.readById(id);
+    const incomingTask = req.body;
+    const updatedTask = Object.assign(currentTask, incomingTask);
+    await this.repo.update(updatedTask);
+    res.send('Task updated');
   }
 
-  delete(req: Request, res: Response) {
-    res.send('Things' + req.params.id);
+  async delete(req: Request, res: Response) {
+    const id = Number(req.params.id);
+    const deleteTask: any = await this.repo.readById(id);
+    await this.repo.delete(deleteTask);
+    res.send('Task removed');
   }
 }
