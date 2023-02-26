@@ -6,7 +6,7 @@ export const app = express();
 
 app.disable('x-powered-by');
 app.use(morgan('dev'));
-const corsoption = { origin: '*' };
+const corsoption = { origin: 'http://localhost:4500/tasks' };
 app.use(cors(corsoption));
 app.use(express.json());
 
